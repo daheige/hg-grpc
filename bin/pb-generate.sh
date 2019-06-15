@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 root_dir=$(cd "$(dirname "$0")"; cd ..; pwd)
 
-proto_bin=$(which "protoc")
-if [ -z $proto_bin ]; then
+protoExec=$(which "protoc")
+if [ -z $protoExec ]; then
     echo 'Please install protoc!'
     exit
 fi
@@ -13,8 +13,6 @@ go_client_dir=$root_dir/clients/go
 
 mkdir -p $pb_dir
 mkdir -p $go_client_dir
-
-protoExec=`which protoc`
 
 rm -rf $root_dir/pb/*
 
