@@ -1,2 +1,3 @@
 logs/*
 *.log
+clients/php/App/*
