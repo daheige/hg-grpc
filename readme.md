@@ -27,6 +27,9 @@
     安装方式2: centos yum 安装
             ubuntu用apt安装(可能是proto2,升级到proto3,建议用源码方式安装)
                 sudo apt install protobuf-c-compiler  protobuf-compiler
+# 安装php grpc工具
+    参考docs/php_grpc.md文件
+
 # 生成golang grpc代码
     sh bin/pb-generate.sh
 # 开始运行
@@ -34,15 +37,20 @@
     2019/06/15 18:12:20 hg-grpc run on: 50051
     
     客户端运行,新开一个窗口
-    $ go run app.go
-    2019/06/15 18:12:23 code:200,message:success
+    $ go run clients/go/app.go 
+    2019/06/15 23:16:23 code:200,message:success
+    2019/06/15 23:16:23 res2:  id:1 name:"heige" age:29  err:  <nil>
+    2019/06/15 23:16:23 res3:  name:"hello,daheige" message:"call success"  error:  <nil>
 
     服务端输出
-    2019/06/15 18:28:12 hg-grpc run on: 50051
-    2019/06/15 18:28:16 recv req: name:"golang grpc" age:29 
-    2019/06/15 18:28:16 golang grpc
-    2019/06/15 18:28:16 recv data:  name:"heige" 
-    2019/06/15 18:28:16 username:  heige
+    $ go run server.go 
+    2019/06/15 23:16:09 hg-grpc run on: 50051
+    2019/06/15 23:16:23 recv req:  name:"golang grpc" age:29 
+    2019/06/15 23:16:23 golang grpc
+    2019/06/15 23:16:23 recv data:  name:"heige" 
+    2019/06/15 23:16:23 username:  heige
+    2019/06/15 23:16:23 recv req:  name:"daheige" 
+    2019/06/15 23:16:23 daheige
  
  # 线上部署
     两种方式：

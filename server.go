@@ -56,6 +56,17 @@ func (s *server) SetUser(ctx context.Context, in *pb.SetUserReq) (*pb.SetUserRes
 	}, nil
 }
 
+type HelloServer struct{}
+
+func (s *HelloServer) SayHello(ctx context.Context, in *pb.HelloReq) (*pb.HelloResponse, error) {
+	log.Println("recv req: ", in)
+	log.Println(in.Name)
+	return &pb.HelloResponse{
+		Name:    "hello," + in.Name,
+		Message: "call success",
+	}, nil
+}
+
 var port int
 
 func init() {
@@ -71,6 +82,7 @@ func main() {
 
 	s := grpc.NewServer()
 	pb.RegisterUserInfoServiceServer(s, &server{})
+	pb.RegisterInfoServiceServer(s, &HelloServer{})
 	// Register reflection service on gRPC server.
 	// https://github.com/grpc/grpc-go/blob/master/Documentation/server-reflection-tutorial.md
 	reflection.Register(s)

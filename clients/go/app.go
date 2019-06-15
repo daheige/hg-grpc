@@ -49,4 +49,10 @@ func main() {
 
 	log.Println("res2: ", res2, "err: ", err)
 
+	c2 := pb.NewInfoServiceClient(conn)
+	res3, err := c2.SayHello(context.Background(), &pb.HelloReq{
+		Name: "daheige",
+	})
+
+	log.Println("res3: ", res3, "error: ", err)
 }
