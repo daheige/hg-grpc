@@ -42,4 +42,8 @@ func main() {
 	}
 
 	log.Printf("code:%d,message:%s", res.Code, res.Message)
+
+	c.GetUserInfo(context.Background(), &pb.UserReq{
+		Name: "heige",
+	})
 }

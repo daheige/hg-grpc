@@ -18,8 +18,22 @@ import (
 // server is used to implement UserInfoServiceServer.
 type server struct{}
 
-func (s *server) GetUserInfo(context.Context, *pb.UserReq) (*pb.UserResponse, error) {
-	panic("implement me")
+func (s *server) GetUserInfo(ctx context.Context, in *pb.UserReq) (*pb.UserResponse, error) {
+	log.Println("recv data: ", in)
+	log.Println("username: ", in.Name)
+	if in.Name == "heige" {
+		return &pb.UserResponse{
+			Id:   1,
+			Name: "heige",
+			Age:  29,
+		}, nil
+	}
+
+	return &pb.UserResponse{
+		Id:   2,
+		Name: "hg-grpc",
+		Age:  39,
+	}, nil
 }
 
 func (s *server) SayHello(ctx context.Context, in *pb.UserReq) (*pb.UserResponse, error) {
