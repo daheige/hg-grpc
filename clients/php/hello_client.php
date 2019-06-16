@@ -56,7 +56,9 @@ function GetUser($name){
     echo "name: ",$reply->getName();
     
     var_dump($reply->getTitle());
-    var_dump($reply->getTitle()[0],count($reply->getTitle()));
+    var_dump(count($reply->getTitle()));
+    echo "title 第一个元素: ";
+    echo !empty($reply->getTitle()[0]) ? $reply->getTitle()[0] : "";
 }
 
 // 把一个对象结构递归变成一数组结构

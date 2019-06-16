@@ -57,11 +57,17 @@
     2019/06/15 23:16:23 daheige
 
     php客户端运行
-    $ php hello_client.php 
-    检测App\Grpc\GPBMetadata\Hello是否存在
+    $ php hello_client.php heige
+    检测App\Grpc\GPBMetadata\Hello\HelloReq是否存在
     bool(true)
     status code: 0
     call success
+    getUser
+    status code: 0
+    id: 11name: heigeobject(Google\Protobuf\Internal\RepeatedField)#19 (0) {
+    }
+    int(4)
+    title 第一个元素: userInfo
  
  # 线上部署
     两种方式：

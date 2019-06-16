@@ -4,12 +4,14 @@ root_dir=$(cd "$(dirname "$0")"; cd ..; pwd)
 protoExec=$(which "protoc")
 if [ -z $protoExec ]; then
     echo 'Please install protoc!'
+    echo "Please look readme.md to install proto3"
     exit
 fi
 
 grpc_php_plugin=$(which "grpc_php_plugin")
 if [ -z $grpc_php_plugin ]; then
     echo 'Please install grpc_php_plugin!'
+    echo "Please look docs/php_grpc.md to install grpc_php_plugin tool"
     exit
 fi
 

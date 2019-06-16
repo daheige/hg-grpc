@@ -36,6 +36,9 @@ func (s *server) GetUserInfo(ctx context.Context, in *pb.UserReq) (*pb.UserRespo
 		Id:   2,
 		Name: "hg-grpc",
 		Age:  39,
+		Title: []string{
+			"getUser", "grpc",
+		},
 	}, nil
 }
 
