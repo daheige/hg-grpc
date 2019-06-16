@@ -1,5 +1,7 @@
 # golang-grpc
-    grpc微服务设计，包含go,php,nodejs代码自动生成，可用于大型项目微服务架构设计。
+    1、grpc微服务设计，包含go,php,nodejs代码自动生成，可用于大型项目微服务架构设计。
+    2、包含nodejs,php,go三种不同客户端调用go grpc微服务模块
+    3、负载均衡处理，采用nginx grpc反向代理
 
 # go-grpc实战指南
     https://github.com/daheige/go-grpc-practice-guide
