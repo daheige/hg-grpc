@@ -6,7 +6,8 @@ let request = new messages.HelloReq()
 request.setName('heige')
 
 let client = new services.InfoServiceClient(
-    'localhost:50051',
+    // 'localhost:50051',
+    'localhost:50050', //nginx grpc负载均衡端口
     grpc.credentials.createInsecure()
 )
 

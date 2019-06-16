@@ -75,6 +75,51 @@
     call success
     hello,heige
 
+# 配置nginx grpc负载均衡
+    为了go grpc服务高可用，需要对grpc服务做负载均衡处理，这里借助nginx grpc模块实现
+
+    #nginx gprc负载均衡配置，要求nginx1.13.0+以上版本
+    #nginx gprc负载均衡配置
+    upstream go_grpc {
+        server 127.0.0.1:50051 weight=5 max_fails=3 fail_timeout=10;
+        server 127.0.0.1:50052 weight=1 max_fails=3 fail_timeout=10;
+    }
+
+    server {
+        listen 50050 http2;
+        server_name localhost;
+
+        access_log /web/wwwlogs/go-grpc-access.log;
+
+        location / {
+            grpc_pass grpc://go_grpc;
+        }
+    }
+
+    重启nginx服务
+    sudo service nginx restart
+
+    测试nginx grpc负载均衡
+    cd clients/php
+    $ php hello_client2.php  heige
+    检测App\Grpc\GPBMetadata\Hello\HelloReq是否存在
+    bool(true)
+    status code: 0
+    call success
+    getUser
+    status code: 0
+    id: 11name: heigeobject(Google\Protobuf\Internal\RepeatedField)#19 (0) {
+    }
+    int(4)
+    title 第一个元素: userInfo
+
+    测试go client
+    $ go run clients/go/app_client_grpc.go heige
+    2019/06/16 17:24:35 code:200,message:success
+    2019/06/16 17:24:35 res2:  id:11 name:"heige" age:23 title:"userInfo" title:"golang" title:"grpc" title:"php-grpc"  err:  <nil>
+    2019/06/16 17:24:35 title:  [userInfo golang grpc php-grpc]
+    2019/06/16 17:24:35 res3:  name:"hello,daheige" message:"call success"  error:  <nil>
+
  # 线上部署
     两种方式：
     1.采用supervisor上线

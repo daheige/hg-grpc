@@ -1,11 +1,14 @@
 <?php
 require dirname(__FILE__) . '/vendor/autoload.php';
 
-const GRPC_ADDRESS = '127.0.0.1:50051';
+/**
+ * 通过nginx grpc负载端口进行连接
+ */
+const Address = '127.0.0.1:50050'; //grpc负载均衡ip:port
 
 function greet($name)
 {
-    $client = new App\Grpc\Hello\InfoServiceClient(GRPC_ADDRESS, [
+    $client = new App\Grpc\Hello\InfoServiceClient(Address, [
         'credentials' => Grpc\ChannelCredentials::createInsecure(),
     ]);
 
@@ -30,8 +33,7 @@ function greet($name)
 }
 
 function GetUser($name){
-    $address = 'localhost:50051';
-    $client = new App\Grpc\User\UserInfoServiceClient(GRPC_ADDRESS, [
+    $client = new App\Grpc\User\UserInfoServiceClient(Address, [
         'credentials' => Grpc\ChannelCredentials::createInsecure(),
     ]);
 
