@@ -42,7 +42,7 @@ echo "generating php stubs..."
 cd $protos_dir
 for file in $protos_dir/*.proto; do
     echo "generating php stubs from: $file"
-    $protoExec --proto_path=$protos_dir --php_out=$root_dir/clients/php/ --plugin=protoc-gen-grpc=$grpc_php_plugin $file
+    $protoExec --proto_path=$protos_dir --php_out=$root_dir/clients/php/ --grpc_out=$root_dir/clients/php/ --plugin=protoc-gen-grpc=$grpc_php_plugin $file
     echo "\t\033[0;32m[DONE]\033[39;49;0m\n"
 done
 
@@ -52,7 +52,7 @@ mv $root_dir/clients/php/GPBMetadata $php_client_dir/App/Grpc/
 #为了避免composer install grpc protobuf的命名空间GPBMetadata冲突
 #这里需要把GPBMetadata加上命名空间
 #在GPBMetadata前面加上命名空间App\Grpc
-sed -i 's/GPBMetadata/App\\\GPBMetadata/g' `grep GPBMetadata -rl $php_client_dir/App/Grpc/`
+sed -i 's/GPBMetadata/App\\\Grpc\\\GPBMetadata/g' `grep GPBMetadata -rl $php_client_dir/App/Grpc/`
 
 echo "\n\033[0;32mGenerate codes successfully!\033[39;49;0m\n"
 

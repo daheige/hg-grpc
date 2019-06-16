@@ -48,6 +48,7 @@ func main() {
 	})
 
 	log.Println("res2: ", res2, "err: ", err)
+	log.Println("title: ", res2.GetTitle())
 
 	c2 := pb.NewInfoServiceClient(conn)
 	res3, err := c2.SayHello(context.Background(), &pb.HelloReq{

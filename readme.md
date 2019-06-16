@@ -1,5 +1,9 @@
 # golang-grpc
-    grpc学习
+    grpc微服务设计，包含go,php代码自动生成，可用于大型项目微服务架构设计。
+
+# go-grpc实战指南
+    https://github.com/daheige/go-grpc-practice-guide
+
 # install proto3
     安装方式1: source install
         下载网站: https://github.com/google/protobuf/releases 
@@ -51,6 +55,13 @@
     2019/06/15 23:16:23 username:  heige
     2019/06/15 23:16:23 recv req:  name:"daheige" 
     2019/06/15 23:16:23 daheige
+
+    php客户端运行
+    $ php hello_client.php 
+    检测App\Grpc\GPBMetadata\Hello是否存在
+    bool(true)
+    status code: 0
+    call success
  
  # 线上部署
     两种方式：

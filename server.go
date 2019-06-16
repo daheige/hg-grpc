@@ -23,9 +23,12 @@ func (s *server) GetUserInfo(ctx context.Context, in *pb.UserReq) (*pb.UserRespo
 	log.Println("username: ", in.Name)
 	if in.Name == "heige" {
 		return &pb.UserResponse{
-			Id:   1,
+			Id:   11,
 			Name: "heige",
-			Age:  29,
+			Age:  23,
+			Title: []string{
+				"userInfo", "golang", "grpc", "php-grpc",
+			},
 		}, nil
 	}
 
@@ -87,6 +90,8 @@ func main() {
 	// https://github.com/grpc/grpc-go/blob/master/Documentation/server-reflection-tutorial.md
 	reflection.Register(s)
 
+	//其他grpc拦截器用法，看go grpc源代码，里面都有对应的方法
+	// Go-gRPC 实践指南 https://www.bookstack.cn/read/go-grpc/chapter2-interceptor.md
 	log.Println("hg-grpc run on:", port)
 	if err = s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)

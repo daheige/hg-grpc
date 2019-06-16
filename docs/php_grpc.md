@@ -3,7 +3,11 @@
 
 # 安装php grpc,protobuf拓展
     sudo pecl install grpc
-    sudo pecl install protobuf
+
+    #如果php版本不支持protobuf可以用composer install安装，这里就不需要安装
+    #对于php7.0+，protoc3可以安装php protobuf拓展
+    #sudo pecl install protobuf 
+    
     sudo service php-fpm restart
     另外一种安装方式phpize方式，地址：http://pecl.php.net/package-search.php?pkg_name=grpc
     http://pecl.php.net/package-search.php?pkg_name=protobuf
