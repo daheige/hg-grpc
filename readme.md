@@ -1,5 +1,5 @@
 # golang-grpc
-    grpc微服务设计，包含go,php代码自动生成，可用于大型项目微服务架构设计。
+    grpc微服务设计，包含go,php,nodejs代码自动生成，可用于大型项目微服务架构设计。
 
 # go-grpc实战指南
     https://github.com/daheige/go-grpc-practice-guide
@@ -68,7 +68,13 @@
     }
     int(4)
     title 第一个元素: userInfo
- 
+
+    nodejs客户端运行
+    cd clients/nodejs
+    node hello_client.js heige
+    call success
+    hello,heige
+
  # 线上部署
     两种方式：
     1.采用supervisor上线
