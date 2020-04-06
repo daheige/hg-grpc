@@ -27,7 +27,7 @@
     sudo chown -R $USER /usr/local/grpc
     git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
 
-    cd cd /usr/local/grpc
+    cd /usr/local/grpc
     git pull --recurse-submodules && git submodule update --init --recursive
     make & sudo make install
     make grpc_php_plugin
